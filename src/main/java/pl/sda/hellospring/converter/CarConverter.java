@@ -12,6 +12,7 @@ public class CarConverter implements GenericConverter<Car, CarDto> {
     @Override
     public CarDto fromEntityToDto(Car entity) {
         var carDto = CarDto.builder()
+            .id(entity.getId())
             .brand(entity.getBrand())
             .color(entity.getColor())
             .model(entity.getModel())
