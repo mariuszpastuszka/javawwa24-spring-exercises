@@ -49,4 +49,13 @@ public class CarService {
 
         return result;
     }
+
+    public CarDto saveCar(CarDto carToSave) {
+        log.info("trying to save car: [{}]", carToSave);
+
+        var savedCar = carRepository.save(carConverter.fromDtoToEntity(carToSave));
+
+        log.info("saved car: [{}]", savedCar);
+        return carConverter.fromEntityToDto(savedCar);
+    }
 }
