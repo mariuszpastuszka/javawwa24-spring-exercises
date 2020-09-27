@@ -39,4 +39,14 @@ public class CarService {
         log.debug("all cars: {}", result);
         return result;
     }
+
+    public CarDto findCarById(Long carId) {
+        var result = carRepository.findById(carId)
+            .map(carConverter::fromEntityToDto)
+            .orElse(CarDto.builder().build());
+
+        log.info("object after conversion [{}]", result);
+
+        return result;
+    }
 }
